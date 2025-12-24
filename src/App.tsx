@@ -1,5 +1,7 @@
 import React from "react";
 import { Card, PageHeader, StatCard, Button } from "customMain/components/shared";
+import { mockActivities } from "./data/mockData";
+import { formatRelativeTime } from "./utils";
 
 export default function App() {
   return (
@@ -31,18 +33,12 @@ export default function App() {
       <Card className="mt-6">
         <h3 className="text-xl font-semibold text-gray-800 mb-4">Recent Activity</h3>
         <div className="space-y-3">
-          <div className="flex items-center justify-between py-2 border-b">
-            <span className="text-gray-700">New user registration: John Doe</span>
-            <span className="text-sm text-gray-500">2 hours ago</span>
-          </div>
-          <div className="flex items-center justify-between py-2 border-b">
-            <span className="text-gray-700">Role updated: Jane Smith</span>
-            <span className="text-sm text-gray-500">5 hours ago</span>
-          </div>
-          <div className="flex items-center justify-between py-2">
-            <span className="text-gray-700">User deactivated: Mike Johnson</span>
-            <span className="text-sm text-gray-500">1 day ago</span>
-          </div>
+          {mockActivities.map((activity) => (
+            <div key={activity.id} className="flex items-center justify-between py-2 border-b last:border-b-0">
+              <span className="text-gray-700">{activity.description}</span>
+              <span className="text-sm text-gray-500">{formatRelativeTime(activity.timestamp)}</span>
+            </div>
+          ))}
         </div>
       </Card>
     </div>
