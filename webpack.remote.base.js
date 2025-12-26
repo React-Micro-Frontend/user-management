@@ -38,7 +38,7 @@ module.exports = (options) => {
       filename: "[name].bundle.js",
       chunkFilename: "[name].chunk.js",
       clean: true,
-      publicPath: "auto"
+      publicPath: isProduction ? "https://user.shoaibarif.site/" : "auto"
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"]
