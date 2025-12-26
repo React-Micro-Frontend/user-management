@@ -1,8 +1,8 @@
 import React from "react";
-import "./index.css";
 import App from "./App";
 
-// Wrapper component that ensures CSS is loaded when exposed via Module Federation
+// Wrapper component for Module Federation
+// CSS is now compiled in custom-main and shared across all remotes
 export default function AppWithStyles() {
   return <App />;
 }

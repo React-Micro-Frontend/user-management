@@ -49,15 +49,8 @@ module.exports = (options) => {
           test: /\.(ts|tsx)$/,
           use: "babel-loader",
           exclude: /node_modules/
-        },
-        {
-          test: /\.css$/,
-          use: [
-            "style-loader",
-            "css-loader",
-            "postcss-loader"
-          ]
         }
+        // CSS is compiled in custom-main and shared across all remotes
       ]
     },
     plugins: [
