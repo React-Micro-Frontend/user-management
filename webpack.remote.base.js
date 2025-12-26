@@ -35,7 +35,8 @@ module.exports = (options) => {
     entry: "./src/index.tsx",
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "bundle.js",
+      filename: "[name].bundle.js",
+      chunkFilename: "[name].chunk.js",
       clean: true,
       publicPath: "auto"
     },
