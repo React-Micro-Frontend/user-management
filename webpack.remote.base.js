@@ -23,9 +23,14 @@ const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = (options) => {
   const { name, port, exposes } = options;
+  const isProduction = process.env.NODE_ENV === 'production';
+  
+  const customMainUrl = isProduction 
+    ? 'https://custom.shoaibarif.site/remoteEntry.js'
+    : 'http://localhost:5000/remoteEntry.js';
   
   return {
-    mode: "development",
+    mode: isProduction ? "production" : "development",
     entry: "./src/index.tsx",
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -59,7 +64,7 @@ module.exports = (options) => {
         filename: "remoteEntry.js",
         exposes,
         remotes: {
-          customMain: "customMain@http://localhost:5000/remoteEntry.js"
+          customMain: `customMain@${customMainUrl}`
         },
         shared: {
           react: { 
