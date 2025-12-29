@@ -18,7 +18,6 @@
  */
 
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = (options) => {
@@ -85,9 +84,6 @@ module.exports = (options) => {
           "tailwindcss": { singleton: true, import: false, strictVersion: false },
           "autoprefixer": { singleton: true, import: false, strictVersion: false }
         }
-      }),
-      new HtmlWebpackPlugin({
-        template: "./public/index.html"
       })
     ],
     devServer: {
